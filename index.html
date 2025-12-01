@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pixel & Tinta | Diseño Gráfico en Santa Clara, Cuba</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #4338ca;
+      --primary-light: #6366f1;
+      --accent: #7e22ce;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --light-gray: #e2e8f0;
+      --white: #ffffff;
+      --transition: all 0.4s ease;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 32px;
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: var(--transition);
+      font-size: 1.05rem;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(126, 34, 206, 0.3);
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-whatsapp:hover {
+      background: #128C7E;
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.8rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #f5f7ff 0%, #f0f4ff 100%);
+      padding-top: 0;
+      padding-bottom: 0;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .hero h1 {
+      font-size: 3.1rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+
+    .highlight {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    /* Sección título */
+    .section-title {
+      text-align: center;
+      font-size: 2.4rem;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      color: var(--gray);
+      font-size: 1.1rem;
+    }
+
+    /* Servicios */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+    }
+
+    .service-card {
+      background: white;
+      padding: 2.2rem;
+      border-radius: 18px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(67, 56, 202, 0.12);
+    }
+
+    .service-card h3 {
+      font-size: 1.45rem;
+      margin: 1.2rem 0 1rem;
+      color: var(--dark);
+    }
+
+    .service-card p {
+      color: var(--gray);
+    }
+
+    .service-icon {
+      font-size: 2.4rem;
+      color: var(--primary);
+    }
+
+    /* Portafolio */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .portfolio-item {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      height: 280px;
+      position: relative;
+      background: var(--light-gray);
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .portfolio-item .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .portfolio-item:hover .overlay {
+      transform: translateY(0);
+    }
+
+    /* Sobre mí */
+    .about-content {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 2.3rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .about-text p {
+      margin-bottom: 1.2rem;
+      color: var(--gray);
+    }
+
+    .contact-badge {
+      background: var(--primary);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    /* Proceso */
+    .process-steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .step {
+      background: white;
+      padding: 1.8rem;
+      border-radius: 16px;
+      text-align: center;
+      width: 220px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .step-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      margin: 0 auto 1.2rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .step h4 {
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    .step p {
+      font-size: 0.95rem;
+      color: var(--gray);
+    }
+
+    /* Testimonios */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      position: relative;
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      color: var(--gray);
+      margin-bottom: 1.2rem;
+    }
+
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .testimonial-location {
+      font-size: 0.9rem;
+      color: var(--primary);
+    }
+
+    /* Contacto */
+    .contact {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .contact h2 {
+      color: white;
+    }
+
+    .contact p {
+      max-width: 650px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem auto;
+      max-width: 700px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2.5rem 2rem 1.5rem;
+    }
+
+    .footer-text {
+      color: #cbd5e1;
+      margin-bottom: 1.2rem;
+    }
+
+    .copyright {
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+
+    /* WhatsApp flotante */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+      z-index: 2000;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 2.4rem; }
+      .about-content { flex-direction: column; }
+      .hero { padding-top: 5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      nav ul { display: none; }
+      .btn { padding: 10px 24px; font-size: 1rem; }
+      .whatsapp-float { bottom: 1.5rem; right: 1.5rem; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">Pixel<span>&</span>Tinta</div>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#portafolio">Portafolio</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="inicio" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Diseño gráfico profesional para tu marca en <span class="highlight">Cuba</span></h1>
+        <p>Creo logotipos, carteles, tarjetas de presentación y kits de identidad visual para emprendedores, tiendas y negocios en <strong>Santa Clara, Villa Clara</strong> y toda la isla. Todo con calidad, rapidez y atención personalizada por WhatsApp.</p>
+        <a href="https://wa.me/5363792628" target="_blank" class="btn btn-whatsapp">
+          <i class="fab fa-whatsapp"></i> Contáctame: +53 63 79 26 28
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="services">
+    <div class="container">
+      <h2 class="section-title">Servicios que ofrezco</h2>
+      <p class="section-subtitle">
+        Cada diseño se crea pensando en tu negocio, tu público y tus objetivos. Aquí están los servicios más solicitados:
+      </p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-palette"></i></div>
+          <h3>Diseño de Logotipos</h3>
+          <p>Creo identidades visuales únicas, memorables y profesionales que reflejan la esencia de tu marca. Ideal para emprendedores que inician o marcas que necesitan renovarse.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
+          <h3>Carteles y Señalética</h3>
+          <p>Diseño carteles para tiendas, promociones, eventos o vallas publicitarias. Formatos listos para impresión en cualquier taller gráfico de Cuba.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-id-card"></i></div>
+          <h3>Tarjetas de Presentación</h3>
+          <p>Tarjetas elegantes, modernas y funcionales. Entrego archivos en JPG, PNG y PDF listos para imprimir en papel couché, mate o cualquier soporte disponible en la isla.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-box-open"></i></div>
+          <h3>Kit de Marca Completo</h3>
+          <p>Incluye: logo principal, variantes (blanco, negro, mini), paleta de colores, tipografías, guía de uso y archivos en todos los formatos necesarios para redes e impresión.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portafolio -->
+  <section id="portafolio" class="portfolio">
+    <div class="container">
+      <h2 class="section-title">Portafolio Destacado</h2>
+      <p class="section-subtitle">
+        Algunos de mis últimos trabajos para clientes en Cuba. Cada pieza fue creada a medida para su negocio.
+      </p>
+      <div class="portfolio-grid">
+        <!-- Reemplaza estas URLs con tus imágenes reales cuando las tengas -->
+        <div class="portfolio-item">
+          <img src="https://via.placeholder.com/600x600/4338ca/ffffff?text=Logo+Cafetería" alt="Logo para cafetería">
+          <div class="overlay">Logotipo - Cafetería Santa Clara</div>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://via.placeholder.com/600x600/7e22ce/ffffff?text=Tarjeta+Presentación" alt="Tarjeta de presentación elegante">
+          <div class="overlay">Tarjeta de Presentación - Freelancer</div>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://via.placeholder.com/600x600/0f172a/ffffff?text=Cartel+Promoción" alt="Cartel promocional">
+          <div class="overlay">Cartel Promocional - Evento Local</div>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://via.placeholder.com/600x600/6366f1/ffffff?text=Kit+Marca" alt="Kit de marca completo">
+          <div class="overlay">Kit de Marca - Tienda Online</div>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://via.placeholder.com/600x600/2563eb/ffffff?text=Logo+Moderno" alt="Logo moderno">
+          <div class="overlay">Logotipo - Empresa Joven</div>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://via.placeholder.com/600x600/7e22ce/ffffff?text=Señalética" alt="Señalética para tienda">
+          <div class="overlay">Señalética - Tienda en Villa Clara</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre mí -->
+  <section id="sobre-mi" class="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Sobre mí y mi trabajo</h2>
+          <p>Soy diseñador gráfico con experiencia trabajando con emprendedores, tiendas minoristas, restaurantes, cafeterías y freelancers en <strong>Santa Clara y toda Villa Clara</strong>.</p>
+          <p>Me especializo en crear identidades visuales que no solo se ven bien, sino que <strong>comunican claramente</strong> lo que tu negocio ofrece y por qué es diferente.</p>
+          <p>Todos mis diseños son:</p>
+          <ul style="padding-left: 1.5rem; margin: 1rem 0 1.5rem; color: var(--gray);">
+            <li>100% originales y personalizados</li>
+            <li>Entregados en formatos listos para usar en Cuba (impresión y digital)</li>
+            <li>Revisables hasta que quedes satisfecho</li>
+            <li>Con atención directa, sin intermediarios</li>
+          </ul>
+          <div class="contact-badge">
+            📍 Basado en Santa Clara, Villa Clara, Cuba
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proceso -->
+  <section id="proceso" class="process">
+    <div class="container">
+      <h2 class="section-title">¿Cómo trabajamos juntos?</h2>
+      <p class="section-subtitle">
+        Un proceso simple, rápido y 100% por WhatsApp. Sin complicaciones.
+      </p>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h4>Escríbeme</h4>
+          <p>Contáctame por WhatsApp y cuéntame tu idea o necesidad.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h4>Presupuesto y plazo</h4>
+          <p>Te doy un presupuesto claro y un plazo de entrega realista.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h4>Diseño y ajustes</h4>
+          <p>Trabajo en el diseño y hago los ajustes que necesites.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h4>Entrega final</h4>
+          <p>Te envío todos los archivos listos para usar o imprimir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">Clientes satisfechos</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p>"Necesitaba un logo para mi cafetería y lo hizo en menos de 48 horas. Capturó exactamente la vibra que quería. ¡Mis clientes lo adoran!"</p>
+          <div class="testimonial-author">Lienys M.</div>
+          <div class="testimonial-location">Dueña de "Café Raíces" – Santa Clara</div>
+        </div>
+        <div class="testimonial-card">
+          <p>"Las tarjetas de presentación que me diseñó son únicas. Ya varios colegas me han pedido el contacto del diseñador. Totalmente recomendado."</p>
+          <div class="testimonial-author">Ernesto D.</div>
+          <div class="testimonial-location">Arquitecto – Camajuaní</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="contact">
+    <div class="container">
+      <h2>¿Listo para crear tu identidad visual?</h2>
+      <p>No necesitas llenar formularios ni esperar correos. Escríbeme directamente por WhatsApp y comencemos hoy mismo.</p>
+      
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Santa Clara, Villa Clara, Cuba</span>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-whatsapp"></i>
+          <span>+53 63 79 26 28</span>
+        </div>
+      </div>
+
+      <a href="https://wa.me/5363792628" target="_blank" class="btn btn-whatsapp">
+        <i class="fab fa-whatsapp"></i> Escríbeme Ahora
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-text">
+      Diseño gráfico profesional para emprendedores y negocios en Cuba.
+    </div>
+    <div class="copyright">
+      &copy; 2025 Pixel & Tinta — Santa Clara, Villa Clara, Cuba
+    </div>
+  </footer>
+
+  <!-- Botón Flotante de WhatsApp -->
+  <a href="https://wa.me/5363792628" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
+  
